@@ -1,0 +1,27 @@
+.alt-header {
+    background-color: #30ba67;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.alt-heading {
+    font-size: 30px;
+    margin: 0;
+    margin-top: 15px;
+}
+.alt-logo {
+    font-size: 30px;
+    // border-bottom: 3px solid white;
+    // border-left: 3px solid white;
+    // border-top: 2px solid white;
+    // // border-right: 3px solid white;
+    border: 3px solid white;
+    padding: 8px;
+}
+.user-profile {
+    border-radius: 50%;
+    background-color: white;
+    height: 50px;
+    width: 50px;
+}
