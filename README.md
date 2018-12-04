@@ -25,6 +25,7 @@ For this project we just divided this into two main parts:-
   2 - Then start the development server using `npm start`.
 
 ## Color Pallet
+Please follow this color pallet.
 ![alt text](./images/color-pallet.png)
 
 
