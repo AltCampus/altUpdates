@@ -1,0 +1,20 @@
+.update__container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.update__field {
+  padding: 0.5rem 1rem; 
+}
+
+.update__form {
+  textarea {
+    resize: none;
+  }
+}
+
+.update__btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
