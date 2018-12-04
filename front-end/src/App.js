@@ -15,7 +15,7 @@ class App extends Component {
         <Profile />
         <CLIP/>
         {/* <DailyUpdates /> */}
-        {/* <DayDetails /> */}
+        <DayDetails />
       </div>
     );
   }
