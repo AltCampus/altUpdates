@@ -5,6 +5,7 @@ class DailyUpdates extends Component {
     return (
       <div className="update wrapper left-container">
         <div className="update__container">
+          <h2 className="update__header center">Update Today's Performance</h2>
           <form className="update__form">
             <input className="text-field margin-tb padding-tb update__field" placeholder="Today's Tweet URL"/>
             <input className="text-field margin-tb padding-tb update__field" placeholder="Coding Challenge URL"/>
