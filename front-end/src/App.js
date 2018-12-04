@@ -12,10 +12,10 @@ class App extends Component {
         <Header />
         {/* <CLIP/>
         <DailyUpdates /> */}
-        <Profile />
+        {/* <Profile /> */}
         <CLIP/>
-        {/* <DailyUpdates /> */}
-        <DayDetails />
+        <DailyUpdates />
+        {/* <DayDetails /> */}
       </div>
     );
   }
