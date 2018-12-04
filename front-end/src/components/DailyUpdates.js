@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { postUpdate } from '../actions/actions';
 import { connect } from 'react-redux';
+import CLIP from './CLIP';
 
 class DailyUpdates extends Component {
 
@@ -25,7 +26,9 @@ class DailyUpdates extends Component {
   render(props) {
     console.log(this.props)
     return (
-      <div className="update wrapper left-container">
+      <div>
+        <CLIP/>
+        <div className="update wrapper left-container">
         <div className="update__container">
           <h2 className="update__header center">Update Today's Performance</h2>
           <form className="update__form" onSubmit={this.handleSubmit}>
@@ -51,6 +54,7 @@ class DailyUpdates extends Component {
             <input type="submit" className="btn update__btn margin-tb padding-tb" value='Submit' />
           </form>
         </div>
+      </div>
       </div>
     );
   }
