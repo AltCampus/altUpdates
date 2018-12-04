@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import CLIP from './CLIP';
 
 class DailyUpdates extends Component {
   render() {
     return (
-      <div className="update wrapper left-container">
+      <div>
+        <CLIP/>
+        <div className="update wrapper left-container">
         <div className="update__container">
           <h2 className="update__header center">Update Today's Performance</h2>
           <form className="update__form">
@@ -14,6 +17,7 @@ class DailyUpdates extends Component {
             <button type="submit" className="btn update__btn margin-tb padding-tb">Submit</button>
           </form>
         </div>
+      </div>
       </div>
     );
   }
