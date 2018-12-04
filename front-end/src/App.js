@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 import CLIP from './components/CLIP';
 
 class App extends Component {
@@ -8,6 +6,7 @@ class App extends Component {
     return (
       <div className="App">
       <CLIP/>
+        <DailyUpdates />
       </div>
     );
   }

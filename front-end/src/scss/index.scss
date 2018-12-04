@@ -1,6 +1,9 @@
 // Import reset
 @import './reset.scss';
 
-@import './header.scss';
 
-@import './layout.scss'
+@import './layout.scss';
+// Import base 
+@import './base.scss';
+
+@import './header.scss';
