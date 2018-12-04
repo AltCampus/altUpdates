@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class DailyUpdates extends Component {
   render() {
     return (
-      <div className="update wrapper">
+      <div className="update wrapper left-container">
         <div className="update__container">
           <form className="update__form">
             <input className="text-field margin-tb padding-tb update__field" placeholder="Today's Tweet URL"/>
