@@ -1,14 +1,19 @@
 .alt-header {
     background-color: #30ba67;
-    padding: 20px;
+    height: 15vh;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: white;
 }
 .alt-heading {
     font-size: 30px;
     margin: 0;
-    margin-top: 15px;
+}
+.profile-logo {
+    margin-right: 10px;
 }
 
 .user-profile {
