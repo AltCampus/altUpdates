@@ -1,7 +1,12 @@
 // Import reset
 @import './reset.scss';
 
+//Import Variables 
+@import './vars';
+
 // Import base 
 @import './base.scss';
 
 @import './header.scss';
+
+@import './daily-updates.scss';
