@@ -10,6 +10,8 @@ For getting started follow the given steps:-<br>
 1 - First clone the repo using `git clone https://github.com/AltCampus/altUpdates.git`.<br>
 2 - Then go the project directory using `cd altUpdates`.
 
+3 - The go to development branch `git checkout development`.
+
 For this project we just divided this into two main parts:-
 * **Front-End Part** - React, Redux and CSS3
   
