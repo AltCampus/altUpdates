@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DailyUpdates from './components/DailyUpdates';
+
 
 class App extends Component {
   render() {
