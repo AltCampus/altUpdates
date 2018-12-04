@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import DailyUpdates from './components/DailyUpdates';
 import CLIP from './components/CLIP';
+import DayDetails from './components/DayDetails';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
         <Header />
         <CLIP/>
         <DailyUpdates />
+        {/* <DayDetails /> */}
       </div>
     );
   }
