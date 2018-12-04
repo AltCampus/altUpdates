@@ -1,0 +1,60 @@
+@import './vars';
+
+.center {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol, ul {
+  padding: 0;
+}
+
+.color-white {
+  color : #fff
+}
+
+.color-grey {
+  color : $color3;
+}
+
+.color-main {
+  color : $color1;
+}
+
+.padding-tb {
+  padding: 1rem 0;
+}
+
+.margin-tb {
+  margin: 1rem 0;
+}
+
+.btn {
+  background:  $color1;
+  width: 100%;
+  color: #fff;
+}
+
+.text-field {
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding-left: 0 1rem;
+  font-size: 1.3rem;
+}
