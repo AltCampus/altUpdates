@@ -10,12 +10,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        {/* <CLIP/>
-        <DailyUpdates /> */}
-        <Profile />
         <CLIP/>
-        {/* <DailyUpdates /> */}
-        <DayDetails />
+        <DailyUpdates />
+        {/* <Profile /> */}
+        {/* <DayDetails /> */}
       </div>
     );
   }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class DailyUpdates extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="update wrapper left-container">
