@@ -29,6 +29,7 @@ class DailyUpdates extends Component {
     const {userId}  = this.props
     console.log(this.props);
     if(!userId) return <Redirect to="/login"/>
+
     return (
       <div>
         <CLIP/>
@@ -72,7 +73,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    userId : state.userId
+    userId : state.currentUserId
   }
 }
 

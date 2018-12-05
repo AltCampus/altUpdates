@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import CLIP from './CLIP';
 import * as data from './../data.json';
-
+import { connect } from 'react-redux';
+import { authAction } from '../actions/actions';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
   
@@ -14,7 +16,10 @@ handleSubmit = (e) => {
   e.preventDefault();
   const {username,password} = this.state;
   const currentUser = data.default.filter(user => username === user.first_name);
-  console.log(currentUser)
+  if(currentUser.length){
+    this.props.authUser(currentUser[0]);
+  }
+  
 }
 
   hanldeChange = (e) => {
@@ -25,6 +30,9 @@ handleSubmit = (e) => {
 
   render() {
     console.log(data);
+
+    if(this.props.currentUserId) return <Redirect to="/" />
+    
     return (
     <React.Fragment>
       <CLIP/>
@@ -40,5 +48,16 @@ handleSubmit = (e) => {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authUser: (data) => dispatch(authAction(data))
+  }
+}
 
-export default Login;
+function mapStateToProps(state) {
+  return {
+    currentUserId : state.currentUserId
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
