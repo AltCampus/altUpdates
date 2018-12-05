@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { postUpdate } from '../actions/actions';
 import { connect } from 'react-redux';
+// import * as data from '../fakeData';
+import {Redirect} from 'react-router-dom'
 import CLIP from './CLIP';
 
 class DailyUpdates extends Component {
@@ -23,8 +25,10 @@ class DailyUpdates extends Component {
     this.props.post(this.state)
   }
 
-  render(props) {
-    console.log(this.props)
+  render(props) { 
+    const {userId}  = this.props
+    console.log(this.props);
+    if(!userId) return <Redirect to="/login"/>
     return (
       <div>
         <CLIP/>
@@ -66,4 +70,10 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(DailyUpdates);
+function mapStateToProps(state) {
+  return {
+    userId : state.userId
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DailyUpdates);
