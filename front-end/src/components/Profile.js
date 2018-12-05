@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 // import * as data from '../fakeData';
+import {Redirect} from 'react-router-dom'
 
 class Profile extends Component {
   render() {
+    
+    
     return (
       <div className="profile wrapper">
         <div className="profile__container">
@@ -57,4 +61,6 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+
+
+export default connect()(Profile);

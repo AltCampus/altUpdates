@@ -11,15 +11,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          
+        <div className="App">     
           <Header />
           <Switch>
             <Route exact path="/signup" component={Signup}/>
             <Route exact path="/login" component={Login}/>
-            <Route path="/:profile_id" component={Profile}/>
-            <Route path="/:profile_id/daily-update" component={DailyUpdates}/>
-            <Route path="/:profile_id/update/:id" component={DayDetails}/>
+            <Route exact path="/:profile_id" component={Profile}/>
+            <Route exact path="/" component={DailyUpdates}/>
+            <Route exact path="/:profile_id/update/:id" component={DayDetails}/>
           </Switch>
         </div>
       </Router>
