@@ -15,13 +15,15 @@ class Login extends Component {
 handleSubmit = (e) => {
   e.preventDefault();
   const {username,password} = this.state;
-  const currentUser = data.default.filter(user => username === user.first_name);
-  if(currentUser.length){
-    this.props.authUser(currentUser[0]);
-  }
+  // const currentUser = data.default.filter(user => username === user.first_name);
+  // if(currentUser.length){
+  //   this.props.authUser(currentUser[0]);
+  // }
   
-}
+  this.props.authUser(this.state);
 
+}
+  
   hanldeChange = (e) => {
     this.setState({
       [e.target.name] : e.target.value
@@ -50,7 +52,7 @@ handleSubmit = (e) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    authUser: (data) => dispatch(authAction(data))
+    authUser: (userCreds) => dispatch(authAction(userCreds))
   }
 }
 

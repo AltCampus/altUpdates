@@ -8,7 +8,6 @@ export default function rootReducer(state = initState, action) {
     case 'POST_UPDATE': {
       console.log("action fired");
       const data = action.data;
-      // let userObj = {}
       
       return {
         ...state,
