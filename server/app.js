@@ -6,7 +6,7 @@ const port = 8000;
 
 mongoose.connect('mongodb://localhost/altUpdates',{ useNewUrlParser: true },  function(err, connection) {
   if(err) throw err
-  else console.log('Connected to mongodb')
+  else console.log('Connected to mongodb');
 });
 
 const user = new mongoose.Schema({
