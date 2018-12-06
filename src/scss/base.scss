@@ -1,0 +1,86 @@
+@import './vars';
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.center {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol, ul {
+  padding: 0;
+}
+
+.color-white {
+  color : #fff
+}
+
+.color-grey {
+  color : $color3;
+}
+
+.color-main {
+  color : $color1;
+}
+
+.padding-tb {
+  padding: 1rem 0;
+}
+
+.margin-tb {
+  margin: 1rem 0;
+}
+
+.btn {
+  background:  $color1;
+  width: 100%;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.text-field {
+  box-sizing: border-box; 
+  border: 1px solid $color3;
+  border-radius: 5px;
+  padding-left: 1rem;
+  font-size: 1.3rem;
+  display:block;
+  width: 100%;
+  font-family: inherit;
+  transition: all 0.2s;
+  &:focus {
+    width : 99%;
+    font-size: 1.1rem;
+  }
+}
+
+// position your own component 
+
+body {
+  position: relative;
+}
+
+.left-container {
+  position: absolute;
+  top: 25%;
+  right: 30%;
+}
