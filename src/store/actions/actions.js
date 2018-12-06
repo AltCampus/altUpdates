@@ -1,9 +1,16 @@
 import * as sampleData from './../../data.json';
+
+
 export  const postUpdate = (data) => {
   console.log(data, "post action fired");
-  return {
-    type: "POST_UPDATE",
-    data
+  return dispatch => {
+   fetch('http://localhost:8000/add-post',{
+     method : 'POST',
+     headers : {
+       "Content-Type" : "applicaqtion/json"
+     },
+     body : JSON.stringify(data)
+   })
   }
 }
 
@@ -19,6 +26,7 @@ export const signUpAction = (data) => {
     })
   }
 }
+
 
 export  const authAction = (data) => {
   console.log(data, "auth action fired");
