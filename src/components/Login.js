@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CLIP from './CLIP';
 import * as data from './../data.json';
 import { connect } from 'react-redux';
-import { authAction } from '../actions/actions';
+import { authAction } from './../store/actions/actions';
 import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
