@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
 
 class Profile extends Component {
   render() {
-    const { currentUserData } = this.props;
-    console.log(currentUserData, "current user data in profile")
+    const { propData, userId } = this.props;
+
+    if(userId) {
+      console.log(userId, "current user data in profile");
+      return <Redirect to="/5"/>
+    }
     
     return (
       <div className="profile wrapper">
@@ -63,7 +67,8 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    propData: state.currentUserData
+    propData: state.currentUserData,
+    userId: state.currentUserId
   }
 }
 
