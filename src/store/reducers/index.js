@@ -48,6 +48,12 @@ export default function rootReducer(state = initState, action) {
         currentUserData : action.data.msg
       };
     }
+    case 'LOGOUT_SUCCESS': {
+      return {
+        currentUserData: {},
+        currentUserId : null
+      }
+    }
     default:
       return state;
   }
