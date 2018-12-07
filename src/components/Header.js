@@ -19,7 +19,7 @@ class Header extends Component {
       <div className="alt-header">
         <ul>
           <Link to="/1">Home</Link>
-
+          <Link to="/signup">Sign Up</Link>
         </ul>
         <h1 className="alt-heading"><span className="alt-logo">alt</span>Updates</h1>
         {
