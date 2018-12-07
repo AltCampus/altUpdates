@@ -11,7 +11,8 @@ class DailyUpdates extends Component {
     tweetURL: '',
     codeChallenegeURL: '',
     reflection: '',
-    date: new Date()
+    date: new Date(),
+    userId: this.props.userId
   }
 
   handleChange = (e) => {
@@ -23,7 +24,7 @@ class DailyUpdates extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.post(this.state);
-    this.props.history.push('/profie')
+    this.props.history.push('/profile')
   }
 
   render(props) { 
