@@ -10,7 +10,7 @@ class Header extends Component {
       const { first_name, last_name, url } = this.props.data;
       profile =
         <div className="profile-logo">
-          <img className="user-profile"  />
+          <img className="user-profile" src={require('./../tempImg/praveen.jpg')}  />
           <label className="profile-lebel">{first_name + " " + last_name}</label>
         </div>
 
