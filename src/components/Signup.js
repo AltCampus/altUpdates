@@ -55,6 +55,7 @@ class Signup extends Component{
       <React.Fragment>
         <CLIP/>
         <div className="Signup">
+        <h1>Signup Form</h1>
          <form className="Signup__form" onSubmit={this.handleSubmit}>
           <input
           onChange={this.handleChange}

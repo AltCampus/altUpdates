@@ -5,7 +5,7 @@ import  { connect } from 'react-redux';
 const SignInLink = (props) => {
   return (
 		<ul className='right'>
-			<li><a onClick={() => props.logOut()}>Log Out</a></li>
+			<li><a onClick={() => props.logOut()} className="auth-btn">Log Out</a></li>
 		</ul>
 	)
 }
