@@ -11,6 +11,7 @@ export default function rootReducer(state = initState, action) {
       return {
         ...state,
         currentUserData : {
+          userObj: {...state.currentUserData.userObj},
           dailyUpdates: [...state.currentUserData.dailyUpdates, data[0].allUpdates]
         } 
       }
