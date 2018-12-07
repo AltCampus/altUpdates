@@ -25,13 +25,14 @@ const user = new mongoose.Schema({
 // userUpdates schema
 
 const userUpdates = new mongoose.Schema({
-	tweetURL: String,
-	codeChallenegeURL:String,
-	reflection: String,
-	date: String
+	userId : String,
+	allUpdates : [{
+		tweetURL: String,
+		codeChallenegeURL:String,
+		reflection: String,
+		date: String
+	}]
 })
-
-
 
 const User = mongoose.model('User', user);
 
@@ -79,35 +80,55 @@ app.post('/signup', (req, res) => {
 app.post('/login', (req, res) => {
 	const userCreds = req.body;
 
-	User.find({username : userCreds.username, password : userCreds.password}, (err, data) => {
+	User.find({username : userCreds.username, password : userCreds.password}, (err, logedInData) => {
 		if(err) return res.sendStatus(404)
-		console.log(data)
-		if(data.length) {
-			res.json(data);
+		
+		if(logedInData.length) {
+			console.log(logedInData, "logged in data");
+			Updates.find({_id : logedInData[0]._id}, (err, data) => {
+				console.log(data, "find data");
+				if(data.length) {
+					return res.json(logedInData);
+				} else {
+					
+					const newUpdate = new Updates({
+						_id : logedInData[0]._id,
+						allUpdates : []
+					})
+		
+					newUpdate.save();
+
+					return res.json(logedInData);
+				}
+			})
 		} else {
 			res.status(404).json({
 				msg : "Please Sign Up. Account Not Available"
 			})
 		}
 	})
-
+	
 })
 
 app.post('/add-post', (req,res) =>{
 	const userUpdates = req.body;
-	const newUpdates = new Updates(userUpdates);
-	console.log(newUpdates);
-	newUpdates.save((err,data) => {
-		if(err){
-			return res.json({
-			 msg: 'Post not created'
-			});
-		}
-		Updates.find({}, (err, data) => {
+	const userId = userUpdates.userId;
+
+	const updateObj = {
+		tweetURL: userUpdates.tweetURL,
+		codeChallenegeURL: userUpdates.codeChallenegeURL,
+		reflection: userUpdates.reflection,
+		date: userUpdates.date
+	}
+
+	console.log(updateObj)
+
+	Updates.updateOne({_id : userId}, { $push : { allUpdates : updateObj}}, false, (err, data) => {
+		Updates.find({_id : userId}, (err, data) => {
 			res.json(data);
 		})
-	});
-	console.log(req.body);
+	})
+	
 })
 
 
