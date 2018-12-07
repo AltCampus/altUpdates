@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { postUpdate } from '../store/actions/actions';
+import { postUpdate } from '../store/actions/actions.js';
 import { connect } from 'react-redux';
 // import * as data from '../fakeData';
 import {Redirect} from 'react-router-dom'
