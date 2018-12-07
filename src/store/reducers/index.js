@@ -18,6 +18,11 @@ export default function rootReducer(state = initState, action) {
     }
     case 'LOGIN_SUCCESS': {
       console.log(action.data[0], "action LOGIN_AUTH data")
+
+      const {username, password} = action.data[0];
+
+      document.cookie = `username=${username} password=${password}`
+
       const myUser = {
         userObj : action.data[0],
         dailyUpdates : []
@@ -44,6 +49,8 @@ export default function rootReducer(state = initState, action) {
       };
     }
     case 'LOGOUT_SUCCESS': {
+      document.cookie = "username='' password=''"
+      
       return {
         currentUserData: {},
         currentUserId : null
