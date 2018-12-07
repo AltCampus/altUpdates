@@ -49,6 +49,8 @@ export default function rootReducer(state = initState, action) {
       };
     }
     case 'LOGOUT_SUCCESS': {
+      document.cookie = "username='' password=''"
+      
       return {
         currentUserData: {},
         currentUserId : null
