@@ -1,18 +1,38 @@
 import * as sampleData from './../../data.json';
 
 
-export  const postUpdate = (data) => {
-  console.log(data, "post action fired");
-  return dispatch => {
-   fetch('http://localhost:8000/add-post',{
-     method : 'POST',
-     headers : {
-       "Content-Type" : "applicaqtion/json"
+export function postUpdate(data) {
+  console.log("fired")
+  return (dispatch) => {
+    fetch("http://192.168.1.116:8000/add-post", {
+     method: 'POST',
+     headers: {
+       "Content-Type": "application/json",
+       "Accept" : "application/json"
      },
-     body : JSON.stringify(data)
-   })
+     body: JSON.stringify({
+      tweetURL: data.tweetURL,
+      codeChallenegeURL: data.codeChallenegeURL,
+      reflection: data.reflection,
+      date: new Date()
+     }) 
+   }).then(res => { 
+     if(res.ok ) {
+       res.json()
+       .then((res) => {
+         console.log(res)
+         return dispatch({ type: 'POST_UPDATE', data:res })
+        })
+       } else {
+       res.json()
+       .then((res) => {
+         return dispatch({ type: 'POST_UNSUCCESS', errData: res})
+       })
+     }
+    })
   }
 }
+
 
 export const signUpAction = (data) => {
   return (dispatch) => {
