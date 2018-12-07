@@ -71,3 +71,8 @@ export  const authAction = (data) => {
   }
 }
 
+export const logOut = () => {
+	return {
+    type: 'LOGOUT_SUCCESS'
+  }
+}
