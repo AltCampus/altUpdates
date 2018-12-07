@@ -6,14 +6,14 @@ const initState = {
 export default function rootReducer(state = initState, action) {
   switch (action.type) {
     case 'POST_UPDATE': {
-      console.log("action fired");
       const data = action.data;
-      
+      console.log('fghjk')
+      console.log(data)
       return {
         ...state,
         currentUserData : {
           ...state.currentUserData,
-          dailyUpdates : [...state.currentUserData.dailyUpdates, ...data]
+          dailyUpdates : data
         } 
       }
     }

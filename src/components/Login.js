@@ -13,11 +13,6 @@ class Login extends Component {
 
 handleSubmit = (e) => {
   e.preventDefault();
-  // const currentUser = data.default.filter(user => username === user.first_name);
-  // if(currentUser.length){
-  //   this.props.authUser(currentUser[0]);
-  // }
-  
   this.props.authUser(this.state);
 
 }
