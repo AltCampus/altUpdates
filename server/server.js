@@ -85,12 +85,13 @@ app.post('/login', (req, res) => {
 		
 		if(logedInData.length) {
 			console.log(logedInData, "logged in data");
+			// find the loggedin User also in Updates Collection
 			Updates.find({_id : logedInData[0]._id}, (err, data) => {
 				console.log(data, "find data");
 				if(data.length) {
 					return res.json(logedInData);
 				} else {
-					
+					// If user is not found create a document for that user
 					const newUpdate = new Updates({
 						_id : logedInData[0]._id,
 						allUpdates : []
@@ -101,6 +102,7 @@ app.post('/login', (req, res) => {
 					return res.json(logedInData);
 				}
 			})
+		
 		} else {
 			res.status(404).json({
 				msg : "Please Sign Up. Account Not Available"
