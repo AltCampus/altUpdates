@@ -26,7 +26,7 @@ const user = new mongoose.Schema({
 
 const userUpdates = new mongoose.Schema({
 	tweetURL: String,
-	codeChallengeURL:String,
+	codeChallenegeURL:String,
 	reflection: String,
 	date: String
 })
@@ -40,11 +40,12 @@ const User = mongoose.model('User', user);
 const Updates = mongoose.model('Updates',userUpdates)
 
 app.get('/', (req, res) => {
-	User.find({username : 'ertyuio'}, (err, data) => {
-		if(err) return res.sendStatus(404);
+	// User.find({username : 'ertyuio'}, (err, data) => {
+	// 	if(err) return res.sendStatus(404);
 
-		console.log(data)
-	})
+	// 	console.log(data)
+	// })
+	res.send("You are connected to Praveen");
 })
 
 app.post('/signup', (req, res) => {
@@ -93,7 +94,6 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/add-post', (req,res) =>{
-	console.log("post");
 	const userUpdates = req.body;
 	const newUpdates = new Updates(userUpdates);
 	console.log(newUpdates);
@@ -103,10 +103,9 @@ app.post('/add-post', (req,res) =>{
 			 msg: 'Post not created'
 			});
 		}
-			return res.json({
-				msg: "Post created"
-			});
-		
+		Updates.find({}, (err, data) => {
+			res.json(data);
+		})
 	});
 	console.log(req.body);
 })
