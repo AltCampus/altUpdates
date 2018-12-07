@@ -9,16 +9,17 @@ class Profile extends Component {
     let item;
     if(userData) {
       if (userData[userData.length - 1]) {
-      item = (<div className="profile__info">
-             <div className="profile__box color-white margin-tb padding-tb center">
-                <h3 className="profile__header ">Last Tweet</h3>
-                <p className="profile__detail">{userData[userData.length - 1].tweetURL}</p>
-              </div>
-                <div className="profile__box color-white margin-tb padding-tb center">
-                    <h3 className="profile__header ">Last Code Challenge</h3>
-                    <p className="profile__detail">{userData[userData.length - 1].codeChallenegeURL}</p>
-                </div>
-              </div>
+      item = (
+      <div className="profile__info">
+        <div className="profile__box color-white margin-tb padding-tb center">
+          <h3 className="profile__header ">Last Tweet</h3>
+          <p className="profile__detail">{userData[userData.length - 1].tweetURL}</p>
+        </div>
+        <div className="profile__box color-white margin-tb padding-tb center">
+            <h3 className="profile__header ">Last Code Challenge</h3>
+            <p className="profile__detail">{userData[userData.length - 1].codeChallenegeURL}</p>
+        </div>
+      </div>
       )
       }
     }

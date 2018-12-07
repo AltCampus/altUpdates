@@ -1,6 +1,3 @@
-import * as sampleData from './../../data.json';
-
-
 export function postUpdate(data) {
   console.log("fired")
   return (dispatch) => {
@@ -20,7 +17,7 @@ export function postUpdate(data) {
      if(res.ok ) {
        res.json()
        .then((res) => {
-         console.log(res)
+         console.log(res, "it's working")
          return dispatch({ type: 'POST_UPDATE', data:res })
         })
        } else {
