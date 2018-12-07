@@ -7,12 +7,12 @@ class Header extends Component {
   render() {
     let profile;
     if (this.props.data) {
-      const { first_name, last_name, url } = this.props.data;
+      const { fullName } = this.props.data;
       profile =
-        <div className="profile-logo">
+        <Link to='/profile' className="profile-logo">
           <img className="user-profile" src={require('./../tempImg/praveen.jpg')}  />
-          <label className="profile-lebel">{first_name + " " + last_name}</label>
-        </div>
+          <label className="profile-lebel">{fullName}</label>
+        </Link>
 
     }
     return (

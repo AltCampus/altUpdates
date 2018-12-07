@@ -5,8 +5,7 @@ import {Redirect} from 'react-router-dom';
 class Profile extends Component {
   render() {
     const { userData, userId } = this.props;
-    
-    let item;
+     let item;
     if(userData) {
       if (userData[userData.length - 1]) {
       item = (
@@ -23,8 +22,6 @@ class Profile extends Component {
       )
       }
     }
-    
-    console.log(userData)
     if(userId) {
       return (
         <div className="profile wrapper">
@@ -32,7 +29,7 @@ class Profile extends Component {
             <div className="profile__img-container center">
               <img src={require('./../tempImg/praveen.jpg')} alt="user" className="profile__img"/>
               <div className="profile__name-container margin-tb">
-                <h2 className="profile__name center">Name : <span className="profile__first-name">{userId.first_name + "  " + userId.last_name}</span></h2>
+                <h2 className="profile__name center">Name : <span className="profile__first-name">{userId.fullName}</span></h2>
               </div>
             </div>
             {
@@ -62,7 +59,7 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    userData: state.currentUserData.dailyUpdates,
+    userData: state.currentUserData.dailyUpdates[0],
     userId: state.currentUserData.userObj
   }
 }

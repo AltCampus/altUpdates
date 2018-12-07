@@ -11,7 +11,8 @@ export function postUpdate(data) {
       tweetURL: data.tweetURL,
       codeChallenegeURL: data.codeChallenegeURL,
       reflection: data.reflection,
-      date: new Date()
+      date: new Date(),
+      userId: data.userId
      }) 
    }).then(res => { 
      if(res.ok ) {
