@@ -17,6 +17,21 @@ class DailyUpdates extends Component {
     }
   }
 
+  componentDidMount() {
+    let allUpdates = [];
+    const {userId} = this.props;
+
+    console.log(userId)
+    if(userId) {
+      fetch(`http://localhost:8000/update/${userId}`)
+        .then(res => res.json())
+        .then(data => {
+          allUpdates = data.allUpdates;
+          console.log(allUpdates);
+        });  
+    }
+  } 
+  
   handleChange = (e) => {
     this.setState({
       [e.target.id] : e.target.value
@@ -30,8 +45,7 @@ class DailyUpdates extends Component {
   }
 
   render(props) { 
-    const {userId, }  = this.props
-    console.log(this.props);
+    const {userId}  = this.props
     if(!userId) return <Redirect to="/login"/>
 
     return (

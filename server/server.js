@@ -52,8 +52,7 @@ app.get('/', (req, res) => {
 app.post('/signup', (req, res) => {
 	const userData = req.body;
 	const newUser = new User(userData);
-	console.log("sign up completed");	
-	
+
 	User.find({username : userData.username}, (err, data) => {
 		if(data.length) {
 			res.writeHead(200, {"Content-Type": "application/json"});
@@ -79,15 +78,14 @@ app.post('/signup', (req, res) => {
 
 app.post('/login', (req, res) => {
 	const userCreds = req.body;
-
+	
 	User.find({username : userCreds.username, password : userCreds.password}, (err, logedInData) => {
 		if(err) return res.sendStatus(404)
 		
 		if(logedInData.length) {
-			console.log(logedInData, "logged in data");
 			// find the loggedin User also in Updates Collection
 			Updates.find({_id : logedInData[0]._id}, (err, data) => {
-				console.log(data, "find data");
+
 				if(data.length) {
 					return res.json(logedInData);
 				} else {
@@ -96,13 +94,13 @@ app.post('/login', (req, res) => {
 						_id : logedInData[0]._id,
 						allUpdates : []
 					})
-		
+					
 					newUpdate.save();
-
+					
 					return res.json(logedInData);
 				}
 			})
-		
+			
 		} else {
 			res.status(404).json({
 				msg : "Please Sign Up. Account Not Available"
@@ -115,22 +113,32 @@ app.post('/login', (req, res) => {
 app.post('/update', (req,res) =>{
 	const userUpdates = req.body;
 	const userId = userUpdates.userId;
-
+	
 	const updateObj = {
 		tweetURL: userUpdates.tweetURL,
 		codeChallenegeURL: userUpdates.codeChallenegeURL,
 		reflection: userUpdates.reflection,
 		date: userUpdates.date
 	}
-
-	console.log(updateObj)
-
+	
 	Updates.updateOne({_id : userId}, { $push : { allUpdates : updateObj}}, false, (err, data) => {
 		Updates.find({_id : userId}, (err, data) => {
 			res.json(data);
 		})
 	})
 	
+})
+
+// Handle route for getting all updates
+app.get('/update/:id', (req, res) => {
+	Updates.find({_id : req.params.id}, (err, data) => {
+		if(err) return res.sendStatus(404);
+		if(data.length) {
+			res.json(data);
+		} else {
+			res.json(data)
+		}		
+	})
 })
 
 
