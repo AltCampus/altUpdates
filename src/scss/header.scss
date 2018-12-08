@@ -29,8 +29,13 @@
     height: 50px;
     width: 50px;
 }
-.profile-lebel {
-    margin-top: 10px;
-    color: rgb(24, 11, 129);
-    font-weight: 600;
+.auth-btn {
+    background-color: antiquewhite;
+    color: #30ba67;
+    padding: 8px 25px;
+    border-radius: 2px;
+    font-size: 12px;
+}
+.signed-in-link {
+    display: flex;
 }
