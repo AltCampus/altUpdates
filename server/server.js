@@ -112,7 +112,7 @@ app.post('/login', (req, res) => {
 	
 })
 
-app.post('/add-post', (req,res) =>{
+app.post('/update', (req,res) =>{
 	const userUpdates = req.body;
 	const userId = userUpdates.userId;
 
