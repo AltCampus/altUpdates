@@ -5,19 +5,21 @@ import {Redirect} from 'react-router-dom';
 class Profile extends Component {
   render() {
     const { userData, userId, userInfo } = this.props;
-    console.log(userInfo)
-     let item;
-    if(userData) {
-      if (userData[userData.length - 1]) {
+
+    if(!userId) return <Redirect to="/login" />
+
+    let item;
+    if(userData.dailyUpdates[0]) {
+      if (userData.dailyUpdates[0][userData.dailyUpdates[0].length - 1]) {
       item = (
         <div className="profile__info">
           <div className="profile__box color-white margin-tb padding-tb center">
             <h3 className="profile__header ">Last Tweet</h3>
-            <p className="profile__detail">{userData[userData.length - 1].tweetURL}</p>
+            <p className="profile__detail">{userData.dailyUpdates[0][userData.dailyUpdates[0].length - 1].tweetURL}</p>
           </div>
           <div className="profile__box color-white margin-tb padding-tb center">
               <h3 className="profile__header ">Last Code Challenge</h3>
-              <p className="profile__detail">{userData[userData.length - 1].codeChallenegeURL}</p>
+              <p className="profile__detail">{userData.dailyUpdates[0][userData.dailyUpdates[0].length - 1].codeChallenegeURL}</p>
           </div>
         </div>
       )
@@ -41,7 +43,7 @@ class Profile extends Component {
             <h3 className="profile__list-header center">LIST</h3>
             <div className="profile__block-container">
               {
-                userData && userData.map((day, i) =>
+                userData.dailyUpdates[0] && userData.dailyUpdates[0].map((day, i) =>
                   <div className="profile__block color center" key={i}>
                     <a href="#" className="profile__link">{day.tweetURL}</a>
                   </div>
@@ -60,7 +62,7 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    userData: state.currentUserData.dailyUpdates[0],
+    userData: state.currentUserData,
     userId: state.currentUserId,
     userInfo: state.currentUserData.userObj
   }
