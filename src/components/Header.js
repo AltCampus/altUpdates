@@ -18,13 +18,16 @@ class Header extends Component {
     }
     return (
       <div className="alt-header">
-        <nav className="alt-heading"><span className="alt-logo">alt</span>Updates</nav>
+        <h1 className="alt-heading"><img src={require('./../tempImg/logo_in_white.png')}/>Updates</h1>
+        <div className="signed-in-link">
         {
           profile
         }
-        <ul className='right'>
-          <Navbar />
-        </ul>
+       <Navbar />
+       
+        </div>
+
+       
       </div>
     )
   }
