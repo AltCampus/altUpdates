@@ -51,6 +51,7 @@ class Login extends Component {
     <React.Fragment>
       <CLIP/>
       <div className='login'>
+        <h1>Login Form</h1>
         <form className="login__form" onSubmit={this.handleSubmit}>
           <input type="text" name='username'  onChange={this.hanldeChange} className="login__email" placeholder="enter your username"/><br/>
           <input type="password" name='password' onChange={this.hanldeChange} className="login__password" placeholder="enter your password"/><br/>

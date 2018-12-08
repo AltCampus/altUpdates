@@ -9,8 +9,13 @@
     color: white;
 }
 .alt-heading {
-    font-size: 30px;
+    font-size: 20px;
     margin: 0;
+
+    img {
+        width: 25px;
+        height: 25px;
+    }
 }
 .profile-logo {
     display: flex;
@@ -22,4 +27,14 @@
     background-color: white;
     height: 50px;
     width: 50px;
+}
+.auth-btn {
+    background-color: antiquewhite;
+    color: #30ba67;
+    padding: 8px 25px;
+    border-radius: 2px;
+    font-size: 12px;
+}
+.signed-in-link {
+    display: flex;
 }

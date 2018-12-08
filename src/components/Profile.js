@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link } from 'react-router-dom';
 
 class Profile extends Component {
   render() {
@@ -30,7 +30,7 @@ class Profile extends Component {
         <div className="profile wrapper">
           <div className="profile__container">
             <div className="profile__img-container center">
-              <img src={require('./../tempImg/praveen.jpg')} alt="user" className="profile__img"/>
+              <img src={require('./../tempImg/profile.png')} alt="user" className="profile__img"/>
               <div className="profile__name-container margin-tb">
                 <h2 className="profile__name center">Name : <span className="profile__first-name">{userInfo.fullName}</span></h2>
               </div>
@@ -45,7 +45,7 @@ class Profile extends Component {
               {
                 userData.dailyUpdates[0] && userData.dailyUpdates[0].map((day, i) =>
                   <div className="profile__block color center" key={i}>
-                    <a href="#" className="profile__link">{day.tweetURL}</a>
+                    <Link to={`/profile/${day._id}`} className="profile__link">{day.tweetURL}</Link>
                   </div>
                 )
               }
