@@ -6,13 +6,15 @@ import {Redirect} from 'react-router-dom'
 import CLIP from './CLIP';
 
 class DailyUpdates extends Component {
-
-  state = {
-    tweetURL: '',
-    codeChallenegeURL: '',
-    reflection: '',
-    date: new Date(),
-    userId: this.props.userId
+  constructor(props) {
+    super(props);
+    this.state = {
+      tweetURL: '',
+      codeChallenegeURL: '',
+      reflection: '',
+      date: new Date(),
+      userId: this.props.userId
+    }
   }
 
   handleChange = (e) => {
@@ -28,7 +30,7 @@ class DailyUpdates extends Component {
   }
 
   render(props) { 
-    const {userId}  = this.props
+    const {userId, }  = this.props
     console.log(this.props);
     if(!userId) return <Redirect to="/login"/>
 

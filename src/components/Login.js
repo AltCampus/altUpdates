@@ -5,11 +5,14 @@ import { authAction } from './../store/actions/actions';
 import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
-  
-  state = {
-    username : '',
-    password : ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      username : '',
+      password : ''
+    }  
   }
+
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -17,22 +20,20 @@ class Login extends Component {
   }
   
   componentDidMount() {
-    // const userCredsArr = document.cookie.slice(document.cookie.indexOf('username')).split(' ');
-    
-    // const username = userCredsArr[0].slice(userCredsArr[0].indexOf('=')+1);
-
-    // const password = userCredsArr[1].slice(userCredsArr[1].indexOf('=')+1);
-
-    // console.log(username, password)
-
-    // this.props.authUser({
-    //   username,
-    //   password
-    // });
-
-    // for deleting cookie
-    //document.cookie = "username='' password=''"
-
+    if(document.cookie) {
+      const userCredsArr = document.cookie.slice(document.cookie.indexOf('username')).split(' ');
+      
+      const username = userCredsArr[0].slice(userCredsArr[0].indexOf('=')+1);
+  
+      const password = userCredsArr[1].slice(userCredsArr[1].indexOf('=')+1);
+  
+      console.log(username, password)
+  
+      this.props.authUser({
+        username,
+        password
+      });
+    } 
   }
   
 

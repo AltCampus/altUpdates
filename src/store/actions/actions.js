@@ -1,7 +1,7 @@
 export function postUpdate(data) {
   console.log("fired")
   return (dispatch) => {
-    fetch("http://192.168.1.116:8000/add-post", {
+    fetch("http://192.168.1.116:8000/update", {
      method: 'POST',
      headers: {
        "Content-Type": "application/json",
