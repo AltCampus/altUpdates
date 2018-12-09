@@ -1,7 +1,9 @@
+var url = "http//:localhost:8000";
+
 export function postUpdate(data) {
   console.log("fired")
   return (dispatch) => {
-    fetch("http://192.168.1.116:8000/add-post", {
+    fetch(`${url}/update`, {
      method: 'POST',
      headers: {
        "Content-Type": "application/json",
@@ -34,7 +36,7 @@ export function postUpdate(data) {
 
 export const signUpAction = (data) => {
   return (dispatch) => {
-    fetch('http://192.168.1.116:8000/signup', {
+    fetch(`${url}/signup`, {
       method : "POST", 
       headers : {
         "Content-Type" : "application/json"
@@ -54,7 +56,7 @@ export const signUpAction = (data) => {
 
 export  const authAction = (data) => {
   return (dispatch) => {
-    fetch('http://192.168.1.116:8000/login', {
+    fetch(`${url}/login`, {
       method : 'POST',
       headers : {
         "Content-Type" : "application/json"
