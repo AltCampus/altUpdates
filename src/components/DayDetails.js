@@ -1,31 +1,51 @@
 import React, { Component } from 'react'
 import CLIP from './CLIP';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
-export default class DayDetails extends Component {
+class DayDetails extends Component {
   render() {
-    return (
-      <React.Fragment>
-          <CLIP/>
-          <div className="left-container day-details">
-        <span className="date-container">Date: 04/12/18</span>
-        <div className="day tweet-container">
-            <h1 className="progress-category">Tweet:</h1>
-            <a className="tweet-url" href="https://twitter.com/ashwanigg3/status/1069659921854201856">
-                https://twitter.com/ashwanigg3/status/1069659921854201856
-            </a>
-        </div>
-        <div className="day code-container">
-            <h1 className="progress-category">Code:</h1>
-            <a className="tweet-url" href="https://twitter.com/ashwanigg3/status/1069659921854201856">
-                https://twitter.com/ashwanigg3/status/1069659921854201856
-            </a>
-        </div>
-        <div className="day reflection-container">
-            <h1 className="progress-category">Reflections:</h1>
-            <p>Everyday, everyone shows up. We learn, build, teach, discuss, and make progress on the software side of things. We keep the learning intense. We care utmost about it.</p>
-        </div>
-      </div>
-      </React.Fragment>
-    )
+      console.log(this.props.dayDetails)
+      const { dayDetails } = this.props;
+      const id = this.props.match.params.id;
+      const one = dayDetails && dayDetails.filter(day => id === day._id);
+      if(one) {
+        console.log(one);
+        return (
+            <React.Fragment>
+                <CLIP/>
+                <div className="left-container day-details">
+              <span className="date-container">Date: {one[0].date}</span>
+              <div className="day tweet-container">
+                  <h1 className="progress-category">Tweet:</h1>
+                  <a className="tweet-url" href={one[0].tweetURL}>
+                      {one[0].tweetURL}
+                  </a>
+              </div>
+              <div className="day code-container">
+                  <h1 className="progress-category">Code:</h1>
+                  <a className="tweet-url" href={one[0].codeChallenegeURL}>
+                      {one[0].codeChallenegeURL}
+                  </a>
+              </div>
+              <div className="day reflection-container">
+                  <h1 className="progress-category">Reflections:</h1>
+                  <p>{one[0].reflection}</p>
+              </div>
+            </div>
+            </React.Fragment>
+          )
+      } else {
+         return <Redirect to='/profile'></Redirect>
+      }
+    
   }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        dayDetails: state.currentUserData.dailyUpdates[0]
+    }
+}
+
+export default connect(mapStateToProps)(DayDetails)
