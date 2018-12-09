@@ -19,24 +19,6 @@ class Login extends Component {
     this.props.authUser(this.state);
   }
   
-  componentDidMount() {
-    if(document.cookie) {
-      const userCredsArr = document.cookie.slice(document.cookie.indexOf('username')).split(' ');
-      
-      const username = userCredsArr[0].slice(userCredsArr[0].indexOf('=')+1);
-  
-      const password = userCredsArr[1].slice(userCredsArr[1].indexOf('=')+1);
-  
-      console.log(username, password)
-  
-      this.props.authUser({
-        username,
-        password
-      });
-    } 
-  }
-  
-
   hanldeChange = (e) => {
     this.setState({
       [e.target.name] : e.target.value
