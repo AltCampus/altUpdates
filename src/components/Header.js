@@ -11,14 +11,14 @@ class Header extends Component {
       const { fullName } = this.props.data;
       profile =
         <Link to='/profile' className="profile-logo">
-          <img className="user-profile" src={require('./../tempImg/avatar.png')}  />
+          <img className="user-profile" src={require('./../tempImg/avatar.png')} alt='user'  />
           <label className="profile-lebel">{fullName}</label>
         </Link>
 
     }
     return (
       <div className="alt-header">
-        <h1 className="alt-heading"><img src={require('./../tempImg/logo_in_white.png')}/>Updates</h1>
+        <a href='/' className="alt-heading"><img src={require('./../tempImg/logo_in_white.png')} alt='logo' />Updates</a>
         <div className="signed-in-link">
         {
           profile

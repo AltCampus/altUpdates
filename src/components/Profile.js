@@ -4,6 +4,7 @@ import {Redirect, Link } from 'react-router-dom';
 
 class Profile extends Component {
   render() {
+    let count = 0;
     const { userData, userId, userInfo } = this.props;
 
     if(!userId) return <Redirect to="/login" />
@@ -32,7 +33,7 @@ class Profile extends Component {
             <div className="profile__img-container center">
               <img src={require('./../tempImg/profile.png')} alt="user" className="profile__img"/>
               <div className="profile__name-container margin-tb">
-                <h2 className="profile__name center">Name : <span className="profile__first-name">{userInfo.fullName}</span></h2>
+                <h2 className="profile__name center"><span className="profile__first-name">{userInfo.fullName}</span></h2>
               </div>
             </div>
             {
@@ -45,7 +46,7 @@ class Profile extends Component {
               {
                 userData.dailyUpdates[0] && userData.dailyUpdates[0].map((day, i) =>
                   <div className="profile__block color center" key={i}>
-                    <Link to={`/profile/${day._id}`} className="profile__link">{day.tweetURL}</Link>
+                    <Link to={`/profile/${day._id}`} className="profile__link">Day {++count}</Link>
                   </div>
                 )
               }

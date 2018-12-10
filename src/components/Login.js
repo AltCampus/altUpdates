@@ -13,29 +13,10 @@ class Login extends Component {
     }  
   }
 
-
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.authUser(this.state);
   }
-  
-  componentDidMount() {
-    if(document.cookie) {
-      const userCredsArr = document.cookie.slice(document.cookie.indexOf('username')).split(' ');
-      
-      const username = userCredsArr[0].slice(userCredsArr[0].indexOf('=')+1);
-  
-      const password = userCredsArr[1].slice(userCredsArr[1].indexOf('=')+1);
-  
-      console.log(username, password)
-  
-      this.props.authUser({
-        username,
-        password
-      });
-    } 
-  }
-  
 
   hanldeChange = (e) => {
     this.setState({
@@ -53,8 +34,8 @@ class Login extends Component {
       <div className='login'>
         <h1>Login Form</h1>
         <form className="login__form" onSubmit={this.handleSubmit}>
-          <input type="text" name='username'  onChange={this.hanldeChange} className="login__email" placeholder="enter your username"/><br/>
-          <input type="password" name='password' onChange={this.hanldeChange} className="login__password" placeholder="enter your password"/><br/>
+          <input type="text" name='username' autoComplete='usrname' onChange={this.hanldeChange} className="login__email" placeholder="enter your username"/><br/>
+          <input type="password" name='password' autoComplete='password' onChange={this.hanldeChange} className="login__password" placeholder="enter your password"/><br/>
           <button className="login__btn">Login</button>
         </form>
       </div>
@@ -75,4 +56,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

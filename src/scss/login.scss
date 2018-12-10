@@ -37,15 +37,6 @@
   border-radius: 3px;
   transition: all .6s;
 }
-// .login__email:focus,
-// .login__password:focus,
-// .Signup__username:focus,
-// .Signup__email:focus,
-// .Signup__password:focus{
-//   // width: 36vw;
-//   font-size: 1.2rem;
-
-// }
 
 .login__btn,
 .Signup__btn{
@@ -69,6 +60,7 @@
   color: rgb(163, 49, 78);
   font-size: .9rem;
   font-weight: 500;
+  margin-top: 10px;
 }
 .green-text {
   color: green;
@@ -76,3 +68,13 @@
 .logout {
   cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+

@@ -3,12 +3,28 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const expresSession = require('express-session');
 
 const port = 8000;
+// let cookieId = cuid();
 
 // Middlewares
 app.use(bodyParser.json());
 app.use(cors());
+app.use(cookieParser());
+
+// app.use(expresSession({
+// 	key : cookieId,
+// 	resave : false,
+// 	cookie: {
+// 		expires : 900000
+// 	}
+// }));
+
+// app.use((req, res, next) => {
+// 	if(req.cookies.cookieId && req.session){}
+// })
 
 mongoose.connect('mongodb://localhost/altUpdates',{ useNewUrlParser: true },  function(err, connection) {
   if(err) throw err
@@ -41,11 +57,6 @@ const User = mongoose.model('User', user);
 const Updates = mongoose.model('Updates',userUpdates)
 
 app.get('/', (req, res) => {
-	// User.find({username : 'ertyuio'}, (err, data) => {
-	// 	if(err) return res.sendStatus(404);
-
-	// 	console.log(data)
-	// })
 	res.send("You are connected to Praveen");
 })
 

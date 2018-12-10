@@ -5,7 +5,7 @@ import { signUpAction } from '../store/actions/actions';
 import { Redirect } from 'react-router-dom';
 
 class Signup extends Component{
-
+  
   state = {
     fullName : '',
     email : '',
@@ -27,9 +27,18 @@ class Signup extends Component{
 
   handleSubmit = e => {
     e.preventDefault();
-    const {password, confirmPassword} = this.state;
+    const {password, confirmPassword, username} = this.state;
     if(password === confirmPassword) {
-      this.props.signUp(this.state);
+      for(const c of username) {
+        if(c === c.toUpperCase()) {
+          this.setState({
+            invalidUserName : username
+          })
+        }
+        else {
+          this.props.signUp(this.state);
+        }
+      }
     }
   }
 
@@ -76,24 +85,31 @@ class Signup extends Component{
           <input 
           onChange={this.handleChange}
           onFocus={this.handleUserName}
-          onMouseOut={this.handleUserNameMsg}
+          onBlur={this.handleUserNameMsg}
           name="username"
           type="text" 
+          autoComplete='username'
           className="Signup__username" 
           placeholder="Enter your username"
           required/>
           {
-            this.state.inputUserName ?  <label className='userAlertMsg'>username should be - , Lowercase or numbers</label>  : ''
+            this.state.inputUserName 
+            ? <label className='userAlertMsg'>username should be - , Lowercase or numbers</label> 
+            : (message.length) ? <label className='userAlertMsg'> { message } </label>   
+            : (this.state.invalidUserName) 
+              ? <label className='userAlertMsg'> Please enter valid username </label> : ''
+              
           }
-          {
-            message.length ?  <label className='userAlertMsg'> { message } </label>  : ''
-          }
+          {/* {
+             message.length ?  <label className='userAlertMsg'> { message } </label>  : ''
+          } */}
           <br/>
           
           <input 
           onChange={this.handleChange}
           name="password"
           type="password" 
+          autoComplete='new-password'
           className="Signup__password" 
           placeholder="Enter your password"
           required/><br/>
@@ -101,6 +117,7 @@ class Signup extends Component{
           onChange={this.handleConfirmPAssword}
           name="confirmPassword"
           type="password" 
+          autoComplete='new-password'
           className="Signup__password" 
           placeholder="Confirm password"
           required/>
