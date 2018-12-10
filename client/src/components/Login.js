@@ -17,7 +17,7 @@ class Login extends Component {
     e.preventDefault();
     this.props.authUser(this.state);
   }
-
+ 
   hanldeChange = (e) => {
     this.setState({
       [e.target.name] : e.target.value
