@@ -18,7 +18,7 @@ router.post('/login',
 );
 
 
-router.post('/add-post', Updates.addPost);
+router.post('/update', Updates.addPost);
 
 
 module.exports = router;

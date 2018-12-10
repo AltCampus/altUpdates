@@ -4,7 +4,7 @@ module.exports = {
   addPost : (req,res) =>{
     const userUpdates = req.body;
     const userId = userUpdates.userId;
-  
+    console.log(req.body);
     const updateObj = {
       tweetURL: userUpdates.tweetURL,
       codeChallenegeURL: userUpdates.codeChallenegeURL,
@@ -14,8 +14,8 @@ module.exports = {
   
     console.log(updateObj)
   
-    Updates.updateOne({_id : userId}, { $push : { allUpdates : updateObj}}, false, (err, data) => {
-      Updates.find({_id : userId}, (err, data) => {
+    Updates.findOneAndUpdate({userId : userId}, { $push : { allUpdates : updateObj}}, false, (err, data) => {
+      Updates.find({userId : userId}, (err, data) => {
         res.json(data);
       })
     })
