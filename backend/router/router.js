@@ -14,7 +14,7 @@ router.post('/signup', User.signup);
 
 router.post('/login', User.login);
 
-router.post('/add-post', Updates.addPost);
+router.post('/update', Updates.addPost);
 
 
 module.exports = router;

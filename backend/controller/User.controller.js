@@ -40,14 +40,14 @@ module.exports  = {
       
       if(logedInData.length) {
         console.log(logedInData, "logged in data");
-        Updates.find({_id : logedInData[0]._id}, (err, data) => {
+        Updates.find({userId : logedInData[0]._id}, (err, data) => {
           console.log(data, "find data");
           if(data.length) {
             return res.json(logedInData);
           } else {
             
             const newUpdate = new Updates({
-              _id : logedInData[0]._id,
+              userId : logedInData[0]._id,
               allUpdates : []
             })
       
