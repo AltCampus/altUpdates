@@ -1,6 +1,7 @@
 const Updates = require('../model/Update');
 const User = require('../model/User');
-
+const Session = require('./../model/Session');
+const session = require('express-session')
 
 module.exports  = {
 
@@ -33,8 +34,8 @@ module.exports  = {
   },
 
   login: (req, res) => {
+    console.log("called")
     const userCreds = req.body;
-  
     User.find({username : userCreds.username, password : userCreds.password}, (err, logedInData) => {
       if(err) return res.sendStatus(404)
       

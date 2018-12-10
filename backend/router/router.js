@@ -1,18 +1,22 @@
 const express = require("express");
 const User = require('../controller/User.controller');
 const Updates = require('../controller/Update.controller');
-
+const passport = require('passport');
+// const passport = require('./../modules/passport');
 
 var router = express.Router();
 
 router.get('/', (req, res) => {
- 
-  res.send("runnin on localhost 8000");
+  res.send('server is running on 8001')
 });
 
 router.post('/signup', User.signup);
 
-router.post('/login', User.login);
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  User.login
+);
+
 
 router.post('/add-post', Updates.addPost);
 
