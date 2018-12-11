@@ -53,7 +53,7 @@ class DailyUpdates extends Component {
         <CLIP/>
         <div className="update wrapper left-container">
         <div className="update__container">
-          <h2 className="update__header center">Update Today's Performance</h2>
+          <h2 className="update__header center">Update Today's Task</h2>
           <form className="update__form" onSubmit={this.handleSubmit}>
             <input 
               className="text-field margin-tb padding-tb update__field" 
@@ -74,7 +74,7 @@ class DailyUpdates extends Component {
               onChange={this.handleChange}
             ></textarea>
 
-            <input type="submit" className="btn update__btn margin-tb padding-tb" value='Submit' />
+            <input type="submit" className="btn update__btn margin-tb padding-tb login__btn" value='Submit' />
           </form>
         </div>
       </div>
