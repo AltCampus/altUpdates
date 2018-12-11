@@ -66,5 +66,15 @@ module.exports  = {
     
   },
 
+  whoAmI: function(req, res) {
+    console.log(req.user);
+    
+    User.findById(req.user._id, function(err, user) {
+      if(err) throw err;
+      if(!user) return res.status(400).send({ message: "No user found." })      
+      res.json({ user: user })
+    });
+  }
+
 
 }
