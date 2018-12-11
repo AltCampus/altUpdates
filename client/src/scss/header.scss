@@ -1,40 +1,45 @@
 .alt-header {
-    background-color: #30ba67;
-    height: 15vh;
-    padding: 2rem 1.5rem;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
+	background-color: #30ba67;
+	height: 15vh;
+	padding: 2rem 1.5rem;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: white;
 }
 .alt-heading {
-    font-size: 20px;
-    margin: 0;
+	font-size: 20px;
+	margin: 0;
+	text-decoration: none;
+	color: white;
 
-    img {
-        width: 25px;
-        height: 25px;
-    }
+	img {
+		width: 25px;
+		height: 25px;
+	}
 }
 .profile-logo {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 20px;
 }
 
 .user-profile {
-    border-radius: 50%;
-    background-color: white;
-    height: 50px;
-    width: 50px;
+	border-radius: 50%;
+	background-color: white;
+	height: 50px;
+	width: 50px;
 }
 .auth-btn {
-    background-color: antiquewhite;
-    color: #30ba67;
-    padding: 8px 25px;
-    border-radius: 2px;
-    font-size: 12px;
+	background-color: antiquewhite;
+	color: #30ba67;
+	padding: 8px 25px;
+	border-radius: 2px;
+	font-size: 12px;
 }
 .signed-in-link {
-    display: flex;
+	display: flex;
+	align-items: center;
 }

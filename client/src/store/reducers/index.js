@@ -31,8 +31,10 @@ export default function rootReducer(state = initState, action) {
       }  
     }
     case 'LOGIN_ERR': {
-      console.log(action.data, "login err reducer")
-      return state;
+      return {
+        currentUserData : action.data,
+        currentUserId : 404
+      }
     }
     case 'SIGNUP_SUCCESS': {
       console.log(action.data, "action SIGNUP_SUCCESS data");
@@ -41,7 +43,6 @@ export default function rootReducer(state = initState, action) {
       }
     }
     case 'SIGNUP_ERR': {
-      console.log(action.data, "action SIGNUP_ERR data");
       return {
         currentUserData : action.data.msg
       };

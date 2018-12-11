@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import CLIP from './CLIP';
 import {connect} from 'react-redux';
 import { signUpAction } from '../store/actions/actions';
-import { Redirect } from 'react-router-dom';
 
 class Signup extends Component{
-
+  
   state = {
     fullName : '',
     email : '',
@@ -27,7 +26,7 @@ class Signup extends Component{
 
   handleSubmit = e => {
     e.preventDefault();
-    const {password, confirmPassword} = this.state;
+    const {password, confirmPassword } = this.state;
     if(password === confirmPassword) {
       this.props.signUp(this.state);
     }
@@ -48,9 +47,7 @@ class Signup extends Component{
   render() {
     const {password, confirmPassword} = this.state;
     const { message } = this.props;
-
-    if(message === '200') return <Redirect to="/login" />
-
+    
     return (
       <React.Fragment>
         <CLIP/>
@@ -76,17 +73,20 @@ class Signup extends Component{
           <input 
           onChange={this.handleChange}
           onFocus={this.handleUserName}
-          onMouseOut={this.handleUserNameMsg}
+          onBlur={this.handleUserNameMsg}
           name="username"
+          maxLength='10'
+          pattern="(?=.*\d)(?=.*[a-z]).{4,}"
           type="text" 
+          autoComplete='username'
           className="Signup__username" 
           placeholder="Enter your username"
           required/>
           {
-            this.state.inputUserName ?  <label className='userAlertMsg'>username should be - , Lowercase or numbers</label>  : ''
-          }
-          {
-            message.length ?  <label className='userAlertMsg'> { message } </label>  : ''
+            this.state.inputUserName 
+            ? <label className='userAlertMsg'>username must contain at least one number and lowercase letter, and at least 4 or more characters</label> 
+            : (message.length) ? (message === '200') ? '' : <label className='userAlertMsg'> { message } </label>   
+            : ''      
           }
           <br/>
           
@@ -94,6 +94,7 @@ class Signup extends Component{
           onChange={this.handleChange}
           name="password"
           type="password" 
+          autoComplete='new-password'
           className="Signup__password" 
           placeholder="Enter your password"
           required/><br/>
@@ -101,6 +102,7 @@ class Signup extends Component{
           onChange={this.handleConfirmPAssword}
           name="confirmPassword"
           type="password" 
+          autoComplete='new-password'
           className="Signup__password" 
           placeholder="Confirm password"
           required/>
@@ -111,8 +113,16 @@ class Signup extends Component{
           }
           <br/>
           <button className="Signup__btn">Signup</button>
-         </form>
-       </div>
+        </form>
+      </div>
+      {
+        message === '200' ? <div className='modal-container'>
+        <div className='modal'>
+          <p>!! SiguUp Successfull !!</p> 
+          <a href='/login' className='closeModal'>close</a>
+        </div>
+      </div> : ''
+      }
       </React.Fragment>
     )
   }
@@ -126,7 +136,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    message: state.currentUserData,
+    message: state.currentUserData
   }
 }
 

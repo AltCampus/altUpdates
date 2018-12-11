@@ -13,6 +13,16 @@
   }
 }
 
+.update__field{
+  border: none;
+  border-bottom: 3px solid #30ba67;
+  outline: none; 
+  border-radius: none;
+}
+.update__field:focus {
+  outline: none;
+}
+
 .update__btn {
   border: none;
   border-radius: 5px;
