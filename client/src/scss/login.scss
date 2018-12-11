@@ -68,7 +68,36 @@
 .logout {
   cursor: pointer;
 }
-
+.modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 200px;
+  background: rgba(87, 118, 181, 0.9);
+  width: 300px;
+  padding: 50px;
+  text-align: center;
+}
+.closeModal {
+  display: inline-block;
+  margin-top: 50px;
+  text-decoration: none;
+  color: #D3D3D3;
+}
+.subtitle {
+  margin-bottom: 50px;
+}
 
 
 

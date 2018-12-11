@@ -3,15 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD:package.json
-    "cookie-parser": "^1.4.3",
-    "cors": "^2.8.5",
-    "cuid": "^2.1.4",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "mongoose": "^5.3.15",
-=======
->>>>>>> f0f5873ab0a96bca1a8b025576627d59d8b14334:client/package.json
     "node-sass": "^4.10.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

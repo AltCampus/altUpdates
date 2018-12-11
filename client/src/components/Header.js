@@ -11,7 +11,7 @@ class Header extends Component {
       const { fullName } = this.props.data;
       profile =
         <Link to='/profile' className="profile-logo">
-          <img className="user-profile" src={require('./../tempImg/avatar.png')} alt='user'  />
+          <img className="user-profile" src={require('../tempImg/profile.png')} alt='user'  />
           <label className="profile-lebel">{fullName}</label>
         </Link>
 

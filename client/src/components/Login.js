@@ -32,7 +32,10 @@ class Login extends Component {
     <React.Fragment>
       <CLIP/>
       <div className='login'>
-        <h1>Login Form</h1>
+        <h1 className='subtitle'>Login Form</h1>
+        {
+          (this.props.msg) ?  <label className='userAlertMsg'> Incorrect user name and password </label> : ''
+        }
         <form className="login__form" onSubmit={this.handleSubmit}>
           <input type="text" name='username' autoComplete='usrname' onChange={this.hanldeChange} className="login__email" placeholder="enter your username"/><br/>
           <input type="password" name='password' autoComplete='password' onChange={this.hanldeChange} className="login__password" placeholder="enter your password"/><br/>
@@ -52,7 +55,8 @@ const mapDispatchToProps = (dispatch) => {
 
 function mapStateToProps(state) {
   return {
-    currentUserId : state.currentUserId
+    currentUserId : state.currentUserData.userObj,
+    msg : state.currentUserData.msg
   }
 }
 

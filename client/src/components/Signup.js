@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import CLIP from './CLIP';
 import {connect} from 'react-redux';
 import { signUpAction } from '../store/actions/actions';
-import { Redirect } from 'react-router-dom';
 
 class Signup extends Component{
   
@@ -27,18 +26,9 @@ class Signup extends Component{
 
   handleSubmit = e => {
     e.preventDefault();
-    const {password, confirmPassword, username} = this.state;
+    const {password, confirmPassword } = this.state;
     if(password === confirmPassword) {
-      for(const c of username) {
-        if(c === c.toUpperCase()) {
-          this.setState({
-            invalidUserName : username
-          })
-        }
-        else {
-          this.props.signUp(this.state);
-        }
-      }
+      this.props.signUp(this.state);
     }
   }
 
@@ -57,9 +47,7 @@ class Signup extends Component{
   render() {
     const {password, confirmPassword} = this.state;
     const { message } = this.props;
-
-    if(message === '200') return <Redirect to="/login" />
-
+    
     return (
       <React.Fragment>
         <CLIP/>
@@ -87,6 +75,8 @@ class Signup extends Component{
           onFocus={this.handleUserName}
           onBlur={this.handleUserNameMsg}
           name="username"
+          maxLength='10'
+          pattern="(?=.*\d)(?=.*[a-z]).{4,}"
           type="text" 
           autoComplete='username'
           className="Signup__username" 
@@ -94,15 +84,10 @@ class Signup extends Component{
           required/>
           {
             this.state.inputUserName 
-            ? <label className='userAlertMsg'>username should be - , Lowercase or numbers</label> 
-            : (message.length) ? <label className='userAlertMsg'> { message } </label>   
-            : (this.state.invalidUserName) 
-              ? <label className='userAlertMsg'> Please enter valid username </label> : ''
-              
+            ? <label className='userAlertMsg'>username must contain at least one number and lowercase letter, and at least 4 or more characters</label> 
+            : (message.length) ? (message === '200') ? '' : <label className='userAlertMsg'> { message } </label>   
+            : ''      
           }
-          {/* {
-             message.length ?  <label className='userAlertMsg'> { message } </label>  : ''
-          } */}
           <br/>
           
           <input 
@@ -128,8 +113,16 @@ class Signup extends Component{
           }
           <br/>
           <button className="Signup__btn">Signup</button>
-         </form>
-       </div>
+        </form>
+      </div>
+      {
+        message === '200' ? <div className='modal-container'>
+        <div className='modal'>
+          <p>!! SiguUp Successfull !!</p> 
+          <a href='/login' className='closeModal'>close</a>
+        </div>
+      </div> : ''
+      }
       </React.Fragment>
     )
   }
@@ -143,7 +136,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    message: state.currentUserData,
+    message: state.currentUserData
   }
 }
 
