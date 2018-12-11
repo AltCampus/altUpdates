@@ -1,11 +1,9 @@
-// const passport = require('passport')
-
-// app.post('/login', 
-//   passport.authenticate('local', { failureRedirect: '/login' }),
-//   function(req, res) {
-//   res.redirect('/');
-// });
-
-// module.exports = {
-//   login : 
-// }
+module.exports = {
+  isLoggedIn : function(req, res, next) {
+    if(req.user) {
+      return next();
+    } else {
+      res.status(400).send({ message: 'Please login to get your information.'})
+    }
+  }
+}

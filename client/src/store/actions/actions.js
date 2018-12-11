@@ -1,4 +1,4 @@
-const url = "http://localhost:8001";
+const url = "http://localhost:8000/api";
 
 export function postUpdate(data) {
   console.log("fired")
@@ -68,7 +68,7 @@ export  const authAction = (data) => {
       if(data.msg) {
         dispatch({type: 'LOGIN_ERR', data})
       } else {
-        dispatch({type: 'LOGIN_SUCCESS', data})
+        dispatch({type: 'LOGIN_SUCCESS', data: data })
       }
     })
   }
