@@ -7,7 +7,11 @@ const passport = require('passport');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('server is running on 8001')
+  res.render('index');
+});
+
+router.get('/login', (req, res) => {
+  res.render('index');
 });
 
 router.post('/signup', User.signup);
@@ -16,6 +20,8 @@ router.post('/login',
   passport.authenticate('local', { failureRedirect: '/login' }),
   User.login
 );
+
+router.get('/whoami', User.whoAmI)
 
 
 router.post('/update', Updates.addPost);
