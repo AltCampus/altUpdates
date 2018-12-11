@@ -21,8 +21,6 @@ export default function rootReducer(state = initState, action) {
 
       const {username, password} = action.data[0];
 
-      document.cookie = `username=${username} password=${password}`
-
       const myUser = {
         userObj : action.data[0],
         dailyUpdates : []
