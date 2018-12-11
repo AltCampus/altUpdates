@@ -17,17 +17,15 @@ export default function rootReducer(state = initState, action) {
       }
     }
     case 'LOGIN_SUCCESS': {
-      console.log(action.data[0], "action LOGIN_AUTH data")
-
-      const {username, password} = action.data[0];
+      console.log(action.data._id, "action LOGIN_AUTH data")
 
       const myUser = {
-        userObj : action.data[0],
+        userObj : action.data,
         dailyUpdates : []
       };
       return {
         currentUserData : myUser,
-        currentUserId : action.data[0]._id
+        currentUserId : action.data._id
       }  
     }
     case 'LOGIN_ERR': {
@@ -48,12 +46,21 @@ export default function rootReducer(state = initState, action) {
       };
     }
     case 'LOGOUT_SUCCESS': {
-      document.cookie = "username='' password=''"
-      
       return {
         currentUserData: {},
         currentUserId : null
       }
+    }
+
+    case 'SET_INITAL_USER' : {
+      const myUser = {
+        userObj : action.data,
+        dailyUpdates : []
+      };
+      return {
+        currentUserData : myUser,
+        currentUserId : action.data._id
+      }  
     }
     default:
       return state;
