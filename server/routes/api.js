@@ -21,4 +21,11 @@ router.post('/update', auth.isLoggedIn, update.addUpdate);
 
 router.get('/user/:id/updates', update.fetchAllUpdates);
 
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.status(200).json({
+    msg : "Session is removed"
+  })
+})
+
 module.exports = router;

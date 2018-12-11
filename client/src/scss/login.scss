@@ -98,8 +98,16 @@
 //   margin-bottom: 50px;
 // }
 
-
-
+.err-msg {
+  position: absolute;
+  top: 15vh;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  background: #620202;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+}
 
 
 
