@@ -18,12 +18,19 @@
 		width: 25px;
 		height: 25px;
 	}
+	span {
+		margin-bottom: 20px;
+	}
 }
 .profile-logo {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-right: 20px;
+}
+.profile-lebel {
+	color: white;
+	margin-top: 5px;
 }
 
 .user-profile {
@@ -35,9 +42,10 @@
 .auth-btn {
 	background-color: antiquewhite;
 	color: #30ba67;
-	padding: 8px 25px;
-	border-radius: 2px;
+	padding: 8px 40px;
+	border-radius: 3px;
 	font-size: 12px;
+	border: none;
 }
 .signed-in-link {
 	display: flex;
