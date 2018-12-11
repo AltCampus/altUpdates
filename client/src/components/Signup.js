@@ -75,7 +75,7 @@ class Signup extends Component{
           onFocus={this.handleUserName}
           onBlur={this.handleUserNameMsg}
           name="username"
-          maxLength='10'
+          maxLength='16'
           pattern="(?=.*\d)(?=.*[a-z]).{4,}"
           type="text" 
           autoComplete='username'

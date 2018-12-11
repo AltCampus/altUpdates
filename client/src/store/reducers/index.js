@@ -17,17 +17,15 @@ export default function rootReducer(state = initState, action) {
       }
     }
     case 'LOGIN_SUCCESS': {
-      console.log(action.data[0], "action LOGIN_AUTH data")
-
-      const {username, password} = action.data[0];
+      console.log(action.data, "action LOGIN_AUTH data")
 
       const myUser = {
-        userObj : action.data[0],
+        userObj : action.data,
         dailyUpdates : []
       };
       return {
         currentUserData : myUser,
-        currentUserId : action.data[0]._id
+        currentUserId : action.data._id
       }  
     }
     case 'LOGIN_ERR': {

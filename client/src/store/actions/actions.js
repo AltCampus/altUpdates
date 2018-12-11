@@ -65,11 +65,7 @@ export  const authAction = (data) => {
     }).then(res => res.json())
     .then(data => {
       console.log(data)
-      if(data.msg) {
-        dispatch({type: 'LOGIN_ERR', data})
-      } else {
-        dispatch({type: 'LOGIN_SUCCESS', data: data })
-      }
+        dispatch({type: 'LOGIN_SUCCESS', data: data.user })
     })
   }
 }
