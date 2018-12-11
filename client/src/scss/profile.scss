@@ -44,7 +44,6 @@
 }
 
 .profile__list-container {
-  background: $color1;
   margin: 2rem;
   border-radius: 5px;
 }
@@ -73,4 +72,18 @@
     display: block;
     padding: 0.5rem 0;
   }
+}
+.gridcells {
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  margin: 0;
+  padding: 0;
+  background: rgb(214, 204, 204);
+}
+.grid {
+  margin: 0;
+  padding: 0;
 }

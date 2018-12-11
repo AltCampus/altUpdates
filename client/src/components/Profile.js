@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Link } from 'react-router-dom';
+import Grid from './Grid';
 
 class Profile extends Component {
   render() {
@@ -40,7 +41,7 @@ class Profile extends Component {
               item
             }
           </div>
-          <div className="profile__list-container margin-tb padding-tb color-white">
+          {/* <div className="profile__list-container margin-tb padding-tb color-white">
             <h3 className="profile__list-header center">LIST</h3>
             <div className="profile__block-container">
               {
@@ -51,7 +52,8 @@ class Profile extends Component {
                 )
               }
             </div>
-          </div>
+          </div> */}
+          <Grid />
         </div>
       )
     } else {

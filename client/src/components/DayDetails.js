@@ -5,12 +5,10 @@ import { Redirect } from 'react-router-dom'
 
 class DayDetails extends Component {
   render() {
-      console.log(this.props.dayDetails)
       const { dayDetails } = this.props;
       const id = this.props.match.params.id;
       const one = dayDetails && dayDetails.filter(day => id === day._id);
       if(one) {
-        console.log(one);
         return (
             <React.Fragment>
                 <CLIP/>
