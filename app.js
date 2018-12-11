@@ -7,16 +7,17 @@ const session = require('express-session');
 const passport = require('passport');
 // const cookieParser = require('cookie-parser');
 const path = require('path');
+const MongoStore = require('connect-mongo')(session);
 
-const port = 8001;
+const port = 8000;
 
-mongoose.connect('mongodb://localhost/altUpdates',{ useNewUrlParser: true },  function(err, connection) {
+mongoose.connect('mongodb://localhost/altUpdates', { useNewUrlParser: true },  function(err, connection) {
   if(err) throw err
   else console.log('Connected to mongodb');
 });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : false}))
+app.use(bodyParser.urlencoded({extended : false}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/dist', express.static(path.resolve(__dirname, 'dist')));
@@ -27,11 +28,12 @@ app.set('view engine', 'ejs');
 // app.use(cookieParser());
 app.use(session({
   secret: 'altUpdates secret',
-  resave: false,
-  saveUninitialized :false,
+  resave: true,
+  saveUninitialized: true,
   cookie : {
-    maxAge : 900000
-  }
+    maxAge : 3600000
+  },
+  store: new MongoStore({ url: 'mongodb://localhost/altupdates-session' })
 }));
 
 if(process.env.NODE_ENV === 'development') {
@@ -53,7 +55,9 @@ app.use(passport.session());
 require('./server/modules/passport')(passport)
 app.use(cors());
 
-app.use(require('./server/router/router'));
+// Routers
+app.use('/api', require('./server/routes/api'));
+app.use(require('./server/routes/index'));
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`)

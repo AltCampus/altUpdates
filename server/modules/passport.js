@@ -1,6 +1,6 @@
 // const passport = require('passport')
 const Local = require('passport-local').Strategy;
-const User = require('./../model/User');
+const User = require('../models/User');
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
@@ -18,8 +18,12 @@ module.exports = function(passport) {
       User.findOne({ username: username }, function (err, user) {
         if (err) { return done(err); }
         if (!user) { return done(null, false); }
-        if (user.password !== password) { return done(null, false); }
-        return done(null, user);
+        user.verifyPassword(password, function(err, isMatched) {
+          if (!isMatched) {
+            return done(null, false)
+          }
+          return done(null, user);
+        }) 
       });
     }
   ));

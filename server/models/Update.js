@@ -8,7 +8,7 @@ const updateSchema = new mongoose.Schema({
 		tweetURL: String,
 		codeChallenegeURL:String,
 		reflection: String,
-		date: {type : Date}
+		date: { type : Date }
 	}]
 });
 
