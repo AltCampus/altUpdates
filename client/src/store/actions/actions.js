@@ -1,4 +1,4 @@
-const url = "http://localhost:8000";
+const url = "http://localhost:8001";
 
 export function postUpdate(data) {
   console.log("fired")
@@ -64,6 +64,7 @@ export  const authAction = (data) => {
       body : JSON.stringify(data)
     }).then(res => res.json())
     .then(data => {
+      console.log(data)
       if(data.msg) {
         dispatch({type: 'LOGIN_ERR', data})
       } else {
