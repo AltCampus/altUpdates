@@ -1,0 +1,38 @@
+.usercards{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usercard{
+  margin: 1rem;
+  padding: 1rem;
+  line-height: 1.5;
+  width: 20vw;
+  height: 20vh;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #fff;
+  background: $color4;
+  text-transform: uppercase;
+  box-shadow: 9px 7px 15px 1px #827f7f;
+  flex-wrap: wrap;
+}
+
+.search__users{
+  display: flex;
+  width: 20vw;
+  height: 2em;
+  justify-content: center;
+  margin: 1rem auto;
+  padding: 2px; 
+  transition: all .4s ease; 
+}
+.search__users::placeholder {
+  font-size: bold;
+  text-transform: uppercase; 
+  font-size: .6rem;
+}
+
+.search__users:focus{
+  padding: 1rem;
+}

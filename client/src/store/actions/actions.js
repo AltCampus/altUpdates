@@ -94,3 +94,18 @@ export function setInitialUserData(data) {
     data : data.updates
   }
 }
+
+
+// export function usersList(data){
+//   console.log(data ,"action dispatched");
+//   return (dispatch) => {
+//     fetch(`${url}/users`).then(res => res.json()).then(
+//       data => {
+//         console.log(data);
+//       return dispatch( 
+//           {
+//         type: 'USERS_LIST',
+//         data
+//       }
+//       )
+// }
