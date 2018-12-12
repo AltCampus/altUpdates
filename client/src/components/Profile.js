@@ -10,18 +10,16 @@ class Profile extends Component {
     allUpdates: []
   }
 
-
-componentWillMount = () => {
-  console.log(this.props.userId)
-  fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
-  .then(res => res.json())
-  .then(data => 
-    this.setState({
-      allUpdates: data.updates.allUpdates
-    })
-  ) 
-}
-
+  componentWillMount = () => {
+    console.log(this.props.userId)
+    fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
+    .then(res => res.json())
+    .then(data => 
+      this.setState({
+        allUpdates: data.updates.allUpdates
+      })
+    ) 
+  }
 
   render() {
     let count = 0;
