@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Link } from 'react-router-dom';
-
+import { setInitialUserData } from '../store/actions/actions';
 
 
 class Profile extends Component {
-  
-  state = {
-    allUpdates: []
-  }
+  constructor(props){
+    super(props);
+    this.state = {
+      allUpdates: []
+    }
+  } 
 
   componentWillMount = () => {
-    console.log(this.props.userId)
-    fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
+    if(this.props.userId) {
+      fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
     .then(res => res.json())
-    .then(data => 
-      this.setState({
-        allUpdates: data.updates.allUpdates
-      })
-    ) 
+    .then(data => this.props.setInitialUserData(data)) 
+    }
   }
 
   render() {
     let count = 0;
-    const { allUpdates } = this.state;
-    const {  userId, userInfo } = this.props;
-
+    // const { allUpdates } = this.props;
+    const {  userId, userInfo, allUpdates } = this.props;
+    console.log(allUpdates, "in profile")
     if(!userId) return <Redirect to="/login" />
 
     let item;
@@ -63,7 +62,7 @@ class Profile extends Component {
             <h3 className="profile__list-header center">LIST</h3>
             <div className="profile__block-container">
               {
-                this.state.allUpdates && this.state.allUpdates.map((day, i) =>
+                allUpdates && allUpdates.map((day, i) =>
                   <div className="profile__block color center" key={i}>
                     <Link to={`/profile/${day._id}`} className="profile__link">Day {++count}</Link>
                   </div>
@@ -83,8 +82,16 @@ class Profile extends Component {
 function mapStateToProps(state) {
   return {
     userId: state.currentUserId,
-    userInfo: state.currentUserData.userObj
+    userInfo: state.currentUserData.userObj,
+    allUpdates : state.currentUserData.dailyUpdates
   }
 }
 
-export default connect(mapStateToProps)(Profile);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setInitialUserData : (data) => dispatch(setInitialUserData(data))
+  }
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

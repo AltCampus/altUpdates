@@ -86,3 +86,11 @@ export function setUserAtIntial(data) {
     type : 'SET_INITAL_USER', data
   }
 }
+
+export function setInitialUserData(data) {
+  console.log(data, "in actions");
+  return {
+    type : 'SET_INITIAL_USER_DATA',
+    data : data.updates
+  }
+}
