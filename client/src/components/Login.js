@@ -51,7 +51,7 @@ class Login extends Component {
         .then(data => {
           this.setState({
             isLoading : false
-          })
+          });
           userResponse = data.user;
           return this.props.setInitalUser(userResponse)
         })
