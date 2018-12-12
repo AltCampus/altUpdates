@@ -63,13 +63,24 @@ export  const authAction = (data) => {
     }).then(res => res.json())
     .then(data => {
       console.log(data)
-        dispatch({type: 'LOGIN_SUCCESS', data: data.user })
+      dispatch({type: 'LOGIN_SUCCESS', data: data.user })
     })
   }
 }
 
 export const logOut = () => {
+
+  fetch(`${url}/logout`)
+    .then(res => res.json())
+    .then(data => console.log(data));
+  
 	return {
     type: 'LOGOUT_SUCCESS'
+  }
+}
+
+export function setUserAtIntial(data) {
+  return {
+    type : 'SET_INITAL_USER', data
   }
 }

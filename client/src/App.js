@@ -6,6 +6,7 @@ import Signup from './components/Signup';
 import Profile from './components/Profile';
 import DayDetails from './components/DayDetails';
 import { BrowserRouter as Router, Switch,Route } from 'react-router-dom';
+import './scss/animate.scss';
 
 class App extends Component {
   render() {
