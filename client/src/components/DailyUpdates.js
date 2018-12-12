@@ -16,21 +16,6 @@ class DailyUpdates extends Component {
       userId: this.props.userId
     }
   }
-
-  // componentDidMount() {
-  //   let allUpdates = [];
-  //   const {userId} = this.props;
-
-  //   console.log(userId)
-  //   if(userId) {
-  //     fetch(`http://localhost:8000/update/${userId}`)
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         allUpdates = data.allUpdates;
-  //         console.log(allUpdates);
-  //       });  
-  //   }
-  // } 
   
   handleChange = (e) => {
     this.setState({
