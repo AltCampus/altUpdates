@@ -62,6 +62,19 @@ export default function rootReducer(state = initState, action) {
         currentUserId : action.data._id
       }  
     }
+
+    case 'SET_INITIAL_USER_DATA' : {
+      console.log(action.data.allUpdates, "in reducer");
+        
+      return {
+        ...state, 
+        currentUserData : {
+          ...state.currentUserData,
+          dailyUpdates : action.data.allUpdates
+        }
+      }
+    }
+    
     default:
       return state;
   }
