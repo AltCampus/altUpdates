@@ -10,8 +10,20 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
+router.get('/users', (req, res) => {
+  res.render('index');
+})
+
+router.get('/profile', (req, res) => {
+  res.render('index');
+});
+
 router.get('/login', (req, res) => {
   res.render('index');
 });
+
+router.get('*',(req, res) => {
+  res.send('404 not found');
+})
 
 module.exports = router;
