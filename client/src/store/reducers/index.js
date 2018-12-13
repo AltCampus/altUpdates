@@ -1,3 +1,4 @@
+
 const initState = {
   currentUserData: {},
   currentUserId : null
@@ -74,6 +75,13 @@ export default function rootReducer(state = initState, action) {
         }
       }
     }
+
+    // case 'USERS_LIST': {
+    //   console.log( state , 'inside reducer');
+    //   return {
+    //     usersList: action.data
+    //   }
+    // }
     
     default:
       return state;
