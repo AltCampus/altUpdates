@@ -17,6 +17,8 @@ class DailyUpdates extends Component {
       userId: this.props.userId
     }
   }
+<<<<<<< HEAD
+=======
 
   componentDidMount() {
     let allUpdates = [];
@@ -39,6 +41,7 @@ class DailyUpdates extends Component {
         })  
     }
   } 
+>>>>>>> development
   
   handleChange = (e) => {
     this.setState({

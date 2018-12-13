@@ -5,7 +5,11 @@ import { Redirect } from 'react-router-dom'
 
 class DayDetails extends Component {
   render() {
+<<<<<<< HEAD
+      const { dayDetails } = this.props;
+=======
       const { dailyUpdates } = this.props;
+>>>>>>> development
       const id = this.props.match.params.id;
       const one = dailyUpdates && dailyUpdates.filter(day => id === day._id);
       if(one) {

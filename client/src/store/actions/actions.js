@@ -1,7 +1,6 @@
 const url = "http://localhost:8000/api";
 
 export function postUpdate(data) {
-  console.log("fired")
   return (dispatch) => {
     fetch(`${url}/update`, {
      method: 'POST',
@@ -20,7 +19,6 @@ export function postUpdate(data) {
      if(res.ok ) {
        res.json()
        .then((res) => {
-         console.log(res, "it's working")
          return dispatch({ type: 'POST_UPDATE', data:res })
         })
        } else {

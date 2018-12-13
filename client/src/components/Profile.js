@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Link } from 'react-router-dom';
+import Grid from './Grid';
 import { setInitialUserData } from '../store/actions/actions';
 
 
@@ -11,6 +12,38 @@ class Profile extends Component {
       allUpdates: []
     }
   } 
+
+getUpdatedTime(repoDate) {
+  let date = new Date(repoDate);
+  let year = date.getFullYear();
+  let month = date.getMonth();
+  let day = date.getDate();
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+  let second = date.getSeconds();
+  let current_date = new Date();
+  let current_year = current_date.getFullYear();
+  let current_month = current_date.getMonth();
+  let current_day = current_date.getDate();
+  let current_hour = current_date.getHours();
+  let current_minute = current_date.getMinutes();
+  let current_second = current_date.getSeconds();
+
+  if(year < current_year) {
+    return (current_year - year + ' years');
+  } else if(month < current_month) {
+    return (current_month - month) + ' months';
+  } else if (day < current_day) {
+    return (current_day - day) + ' days';
+  } else if(hour < current_hour) {
+    return (current_hour - hour) + ' hours';
+  } else if(minute < current_minute) {
+    return (current_minute - minute) + ' minutes';
+  } else if(second < current_second) {
+    return (current_second - second) + ' seconds';
+  }
+
+}
 
   componentWillMount = () => {
     if(this.props.userId) {
@@ -33,8 +66,10 @@ class Profile extends Component {
       item = (
         <div className="profile__info">
           <div className="profile__box color-white margin-tb padding-tb center">
-            <h3 className="profile__header ">Last Tweet</h3>
-            <p className="profile__detail">{allUpdates[allUpdates.length - 1].tweetURL}</p>
+            <h3 className="profile__header ">About Tweet</h3>
+            {/* <p className="profile__detail">{allUpdates[allUpdates.length - 1].tweetURL}</p> */}
+            <p className="profile__detail">Total Tweets:   {allUpdates.length}</p>
+            <p className="profile__detail">Last Update:   {this.getUpdatedTime(allUpdates[allUpdates.length - 1].date)} ago</p>
           </div>
           <div className="profile__box color-white margin-tb padding-tb center">
               <h3 className="profile__header ">Last Code Challenge</h3>
@@ -58,18 +93,7 @@ class Profile extends Component {
               item
             }
           </div>
-          <div className="profile__list-container margin-tb padding-tb color-white">
-            <h3 className="profile__list-header center">LIST</h3>
-            <div className="profile__block-container">
-              {
-                allUpdates && allUpdates.map((day, i) =>
-                  <div className="profile__block color center" key={i}>
-                    <Link to={`/profile/${day._id}`} className="profile__link">Day {++count}</Link>
-                  </div>
-                )
-              }
-            </div>
-          </div>
+          <Grid allUpdates={allUpdates} />
         </div>
       )
     } else {

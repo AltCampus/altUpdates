@@ -18,7 +18,7 @@ class Header extends Component {
     }
     return (
       <div className="alt-header">
-        <a href='/' className="alt-heading"><img src={require('./../tempImg/logo_in_white.png')} alt='logo' /><span>Updates</span></a>
+        <Link to='/' className="alt-heading"><img src={require('./../tempImg/logo_in_white.png')} alt='logo' />Updates</Link>
         <div className="signed-in-link">
         {
           profile
