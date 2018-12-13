@@ -2,26 +2,16 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Redirect, Link } from 'react-router-dom';
 import Grid from './Grid';
-
+import { setInitialUserData } from '../store/actions/actions';
 
 
 class Profile extends Component {
-  
-  state = {
-    allUpdates: []
-  }
-
-
-componentWillMount = () => {
-  console.log(this.props.userId)
-  fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
-  .then(res => res.json())
-  .then(data => 
-    this.setState({
-      allUpdates: data.updates.allUpdates
-    })
-  ) 
-}
+  constructor(props){
+    super(props);
+    this.state = {
+      allUpdates: []
+    }
+  } 
 
 getUpdatedTime(repoDate) {
   let date = new Date(repoDate);
@@ -55,12 +45,19 @@ getUpdatedTime(repoDate) {
 
 }
 
+  componentWillMount = () => {
+    if(this.props.userId) {
+      fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
+    .then(res => res.json())
+    .then(data => this.props.setInitialUserData(data)) 
+    }
+  }
 
   render() {
     let count = 0;
-    const { allUpdates } = this.state;
-    const {  userId, userInfo } = this.props;
-
+    // const { allUpdates } = this.props;
+    const {  userId, userInfo, allUpdates } = this.props;
+    console.log(allUpdates, "in profile")
     if(!userId) return <Redirect to="/login" />
 
     let item;
@@ -109,8 +106,16 @@ getUpdatedTime(repoDate) {
 function mapStateToProps(state) {
   return {
     userId: state.currentUserId,
-    userInfo: state.currentUserData.userObj
+    userInfo: state.currentUserData.userObj,
+    allUpdates : state.currentUserData.dailyUpdates
   }
 }
 
-export default connect(mapStateToProps)(Profile);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setInitialUserData : (data) => dispatch(setInitialUserData(data))
+  }
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

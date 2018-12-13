@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // import * as data from '../fakeData';
 import {Redirect} from 'react-router-dom'
 import CLIP from './CLIP';
+// import moment from moment;
 
 class DailyUpdates extends Component {
   constructor(props) {
@@ -16,6 +17,31 @@ class DailyUpdates extends Component {
       userId: this.props.userId
     }
   }
+<<<<<<< HEAD
+=======
+
+  componentDidMount() {
+    let allUpdates = [];
+    const {userId} = this.props;
+
+    if(userId) {
+      fetch(`http://localhost:8000/api/user/${userId}/updates`)
+        .then(res => res.json())
+        .then(data => {
+          allUpdates = data.updates.allUpdates;
+          for(const update of allUpdates) {
+            if(new Date(update.date).toDateString() === new Date().toDateString()) {
+              console.log('true')
+              this.props.history.push('/profile');
+            }
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })  
+    }
+  } 
+>>>>>>> development
   
   handleChange = (e) => {
     this.setState({
@@ -26,7 +52,7 @@ class DailyUpdates extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.post(this.state);
-    this.props.history.push('/profile')
+    this.props.history.push('/profile');
   }
 
   render(props) { 

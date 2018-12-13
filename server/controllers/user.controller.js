@@ -41,7 +41,14 @@ module.exports  = {
       if(err) throw err;
       res.json({ user: user })
     });
+  },
+
+  users : (req,res) => {
+    console.log(req.user);
+    User.find({ }, { password : 0 }, (err , user) => {
+      if(err) throw err;
+      console.log(user);
+      res.json({ user: user })
+    })
   }
-
-
 }

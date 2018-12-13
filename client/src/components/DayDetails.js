@@ -5,15 +5,19 @@ import { Redirect } from 'react-router-dom'
 
 class DayDetails extends Component {
   render() {
+<<<<<<< HEAD
       const { dayDetails } = this.props;
+=======
+      const { dailyUpdates } = this.props;
+>>>>>>> development
       const id = this.props.match.params.id;
-      const one = dayDetails && dayDetails.filter(day => id === day._id);
+      const one = dailyUpdates && dailyUpdates.filter(day => id === day._id);
       if(one) {
         return (
             <React.Fragment>
                 <CLIP/>
                 <div className="left-container day-details">
-              <span className="date-container">Date: {one[0].date}</span>
+              <span className="date-container">Date: {new Date(one[0].date).toDateString()}</span>
               <div className="day tweet-container">
                   <h1 className="progress-category">Tweet:</h1>
                   <a className="tweet-url" href={one[0].tweetURL}>
@@ -42,7 +46,7 @@ class DayDetails extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        dayDetails: state.currentUserData.dailyUpdates[0]
+        dailyUpdates: state.currentUserData.dailyUpdates
     }
 }
 
