@@ -35,7 +35,7 @@ class Grid extends Component {
       for (var idx = 0; idx < 36; idx++){
         let cellID = `cell${i}-${idx}`
         let id = nextDate(nextDay);
-        let className = 'gridcells';
+        let className;
 
         allUpdates.map(obj => {
           let tempDate1 = obj.date.split('T')[0].split('-');
@@ -48,8 +48,7 @@ class Grid extends Component {
           for(let i = 0; i< tempDate2.length; i++) {
             dFormate2 += tempDate2[i];
           }
-
-          console.log(dFormate1, dFormate2, "in grid check 2")
+          console.log(dFormate1, dFormate2)
           if(dFormate1 == dFormate2) {
             className = 'gridcells green';
           } else className = 'gridcells';
