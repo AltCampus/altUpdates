@@ -12,7 +12,6 @@ class Profile extends Component {
 
 
 componentWillMount = () => {
-  console.log(this.props.userId)
   fetch(`http://localhost:8000/api/user/${this.props.userId}/updates`)
   .then(res => res.json())
   .then(data => 
@@ -65,7 +64,7 @@ componentWillMount = () => {
             <h3 className="profile__list-header center">LIST</h3>
             <div className="profile__block-container">
               {
-                this.state.allUpdates && this.state.allUpdates.map((day, i) =>
+                this.state.allUpdates && this.state.allUpdates.map((day, i) => 
                   <div className="profile__block color center" key={i}>
                     <Link to={`/profile/${day._id}`} className="profile__link">Day {++count}</Link>
                   </div>

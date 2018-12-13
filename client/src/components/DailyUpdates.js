@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { postUpdate } from '../store/actions/actions.js';
 import { connect } from 'react-redux';
-// import * as data from '../fakeData';
 import {Redirect} from 'react-router-dom'
 import CLIP from './CLIP';
 
@@ -16,21 +15,6 @@ class DailyUpdates extends Component {
       userId: this.props.userId
     }
   }
-
-  // componentDidMount() {
-  //   let allUpdates = [];
-  //   const {userId} = this.props;
-
-  //   console.log(userId)
-  //   if(userId) {
-  //     fetch(`http://localhost:8000/update/${userId}`)
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         allUpdates = data.allUpdates;
-  //         console.log(allUpdates);
-  //       });  
-  //   }
-  // } 
   
   handleChange = (e) => {
     this.setState({
